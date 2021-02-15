@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "195382374494",
+    "firebase_url": "https://alaramapi-3e897-default-rtdb.firebaseio.com",
+    "project_id": "alaramapi-3e897",
+    "storage_bucket": "alaramapi-3e897.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195382374494:android:a902169231d5ef8e0a84cf",
+        "android_client_info": {
+          "package_name": "com.alaramapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195382374494-1p2cl5ths37gf323aod5sbd6ove38g2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtoWjvWmOVpVM2KQvbfF54DbwpLaoPOW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195382374494-1p2cl5ths37gf323aod5sbd6ove38g2h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
