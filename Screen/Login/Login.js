@@ -2,54 +2,47 @@ import React, { Component } from 'react';
 import styles from './style'
 import { Alert, Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-// import auth from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 class Login extends Component {
-
-  //   constructor(props) {
-  //       super(props);
+    constructor(props) {
+        super(props);
         
-  //       this.state ={
+        this.state ={
         
-  //       email:"",
-  //       password:"",
+        email:"",
+        password:"",
     
         
-  //       }
+        }
+
         
+        }
         
-  //       }
+        loginUser = ()=>{
+           console.log('Test Register')
+           auth()
+          .signInWithEmailAndPassword(this.state.email, this.state.password)
+          .then((response) => {
+            console.log('User account  signed in!');
+            console.log("RESPONSE"+response)
+            this.props.navigation.navigate("Menu")
+          })
+          .catch(error => {
+            if (error.code === 'auth/email-already-in-use') {
+              console.log('That email address is already in use!');
+            }
         
-  //       loginUser = ()=>{
-  //          console.log('Test Register')
-  //          auth()
-  //         .signInWithEmailAndPassword(this.state.email, this.state.password)
-  //         .then((response) => {
-  //           console.log('User account  signed in!');
-  //           console.log("RESPONSE"+response)
-  //           this.props.navigation.navigate("Dashboard")
-  //         })
-  //         .catch(error => {
-  //           if (error.code === 'auth/email-already-in-use') {
-  //             console.log('That email address is already in use!');
-  //           }
+            if (error.code === 'auth/invalid-email') {
+              console.log('That email address is invalid!');
+            }
         
-  //           if (error.code === 'auth/invalid-email') {
-  //             console.log('That email address is invalid!');
-  //           }
-        
-  //           console.error(error);
-  //         });
+            console.error(error);
+          });
            
         
         
-  //       }
-      
-
-  goToRegistration = () =>{
-    console.log("Test Button")
-    this.props.navigation.navigate('Home')
-  }
+        }
     render() {
         return (
             <View style={styles.container}>
@@ -60,11 +53,11 @@ class Login extends Component {
                     style={styles.logo}
                     source={require('../../assets/logo.png')} 
                 />
-                <TextInput
+                  <TextInput
                     style={styles.input}
                     placeholder='E-mail'
                     placeholderTextColor="#aaaaaa"
-                    // onChangeText={(email) => this.setState({ email : email})}
+                    onChangeText={(email) => this.setState({ email : email})}
                     
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
@@ -74,20 +67,25 @@ class Login extends Component {
                     placeholderTextColor="#aaaaaa"
                     secureTextEntry
                     placeholder='Password'
-                    // onChangeText={(password) => this.setState({ password : password})}
+                    onChangeText={(password) => this.setState({ password : password})}
                     
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
-                <TouchableOpacity 
-                   onPress={() => this.props.navigation.navigate('Menu')}
+                <TouchableOpacity
+                    onPress={this.loginUser}
                     style={styles.button}>
                     <Text style={styles.buttonTitle}>Log in</Text>
                 </TouchableOpacity>
+                {/* <TouchableOpacity 
+                   onPress={() => this.props.navigation.navigate('Menu')}
+                    style={styles.button}>
+                    <Text style={styles.buttonTitle}>Log in</Text>
+                </TouchableOpacity> */}
                 
                 <View style={styles.footerView}>
                 
-                    <Text style={styles.footerText}>Don't have an account? <Text onPress={() => this.props.navigation.navigate('Home')} style={styles.footerLink}>Sign up</Text></Text>
+                    <Text style={styles.footerText}>Don't have an account? <Text onPress={() => this.props.navigation.navigate('Register')} style={styles.footerLink}>Sign up</Text></Text>
                 </View>
             </KeyboardAwareScrollView>
         </View>

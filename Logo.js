@@ -26,7 +26,6 @@ return(
 
 source={require('./assets/logo.png')}/>
 
-<Text style={styles.logoText}>Alaram Api</Text>
 
 </View>
 
@@ -47,16 +46,6 @@ flexGrow: 1,
 justifyContent:'flex-end',
 
 alignItems: 'center'
-
-},
-
-logoText : {
-
-marginVertical: 15,
-
-fontSize:18,
-
-color:'#fa0000'
 
 }
 
